@@ -1,0 +1,26 @@
+h2
+  = @task.name
+.form-group.row
+  .col-2.col-form-label
+    p task body
+  .col-10
+    = @task.body
+.form-group.row
+  .col-2.col-form-label
+    p task limits
+  .col-10
+    = @task.limits.strftime("%Y-%m-%d")
+.form-group.row
+  .col-2.col-form-label
+    p task status
+  .col-10
+    = @task.status
+.form-group.row
+  .col-2.col-form-label
+    p task priority
+  .col-10
+    = @task.priority
+    
+hr
+
+= link_to 'Delete', task_path, method: :delete, class: "btn btn-danger"
