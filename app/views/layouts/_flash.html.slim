@@ -1,0 +1,5 @@
+- flash.each do |message_type, messages|
+  .alert class="alert-#{message_type}"
+    - messages.each do |msg|
+      li
+        = msg

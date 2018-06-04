@@ -13,22 +13,22 @@ class TasksController < ApplicationController
   def create
     return if require_valid_params(@task)
     if @task.save!
-      redirect_to @task
+      redirect_to @task, succeess: ['task cleated']
     end
   end
 
   def edit; end
 
   def update
-    @task.params = task_params
+    @task.attributes = task_params
     return if require_valid_params(@task)
     @task.save
-    redirect_to @task
+    redirect_to @task, success: ['task updated']
   end
 
   def destroy
     @task.destroy
-    redirect_to tasks_url
+    redirect_to tasks_url, success: ['task delete']
   end
 
   private
