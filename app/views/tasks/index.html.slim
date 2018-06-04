@@ -2,8 +2,8 @@
 table.table.table-bordered
   thead
     tr
-      th name
-      th limits
-      th status
+      th = sort_index('name', 'name')
+      th = sort_index('limits', 'limits')
+      th = sort_index('status', 'status')
   tbody
     = render @tasks

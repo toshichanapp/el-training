@@ -42,7 +42,7 @@ class TasksController < ApplicationController
   def load_resource
     case params[:action].to_sym
       when :index
-        @tasks = Task.all
+        @tasks = Task.all.order(params[:sort])
       when :create
         @task = Task.new(task_params)
       when :show, :edit, :update, :destroy
