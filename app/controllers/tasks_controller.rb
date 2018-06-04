@@ -13,7 +13,7 @@ class TasksController < ApplicationController
   def create
     return if require_valid_params(@task)
     if @task.save!
-      redirect_to @task, succeess: ['task cleated']
+      redirect_to @task, success: ['task created']
     end
   end
 
