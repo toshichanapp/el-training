@@ -8,3 +8,5 @@ table.table.table-bordered
       th = sort_link(@q, :priority)
   tbody
     = render @tasks
+= page_entries_info @tasks
+= paginate @tasks
