@@ -2,8 +2,8 @@
 table.table.table-bordered
   thead
     tr
-      th = sort_index('name', 'name')
-      th = sort_index('limits', 'limits')
-      th = sort_index('status', 'status')
+      th = sort_link(@q, :name)
+      th = sort_link(@q, :limit)
+      th = sort_link(@q, :status)
   tbody
     = render @tasks

@@ -2,7 +2,10 @@ class TasksController < ApplicationController
   include CommonUtils
   before_action :load_resource
 
-  def index; end
+  def index
+    @q = Task.ransack(params[:q])
+    @tasks = @q.result
+  end
 
   def show; end
 
@@ -41,8 +44,6 @@ class TasksController < ApplicationController
 
   def load_resource
     case params[:action].to_sym
-      when :index
-        @tasks = Task.all.order(params[:sort])
       when :create
         @task = Task.new(task_params)
       when :show, :edit, :update, :destroy
