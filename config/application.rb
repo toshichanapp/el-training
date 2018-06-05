@@ -24,6 +24,8 @@ module ElTraining
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.active_record.default_timezone = :local
+    config.time_zone = 'Tokyo'
 
     config.generators do |g|
       g.system_tests nil
@@ -32,6 +34,13 @@ module ElTraining
       g.stylesheets false
       g.javascripts false
       g.helper false
+      g.test_framework :rspec,
+                       fixtures: false,
+                       view_specs: false,
+                       helper_specs: false,
+                       routing_specs: false
     end
+
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
   end
 end

@@ -2,8 +2,11 @@
 table.table.table-bordered
   thead
     tr
-      th name
-      th limits
-      th status
+      th = sort_link(@q, :name)
+      th = sort_link(@q, :limit)
+      th = sort_link(@q, :status)
+      th = sort_link(@q, :priority)
   tbody
     = render @tasks
+= page_entries_info @tasks
+= paginate @tasks

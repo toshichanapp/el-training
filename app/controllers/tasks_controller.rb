@@ -2,7 +2,10 @@ class TasksController < ApplicationController
   include CommonUtils
   before_action :load_resource
 
-  def index; end
+  def index
+    @q = Task.ransack(params[:q])
+    @tasks = @q.result.page(params[:page]).per(10)
+  end
 
   def show; end
 
@@ -13,7 +16,7 @@ class TasksController < ApplicationController
   def create
     return if require_valid_params(@task)
     if @task.save!
-      redirect_to @task, succeess: ['task cleated']
+      redirect_to @task, success: ['task created']
     end
   end
 
@@ -41,8 +44,6 @@ class TasksController < ApplicationController
 
   def load_resource
     case params[:action].to_sym
-      when :index
-        @tasks = Task.all
       when :create
         @task = Task.new(task_params)
       when :show, :edit, :update, :destroy

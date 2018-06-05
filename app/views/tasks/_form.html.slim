@@ -20,6 +20,6 @@
   .form-group.row
     = f.label :priority, class:'col-2 col-form-label'
     .col-10
-      = f.select :priority, Task.priorities.keys, {}, class:'form-control'
+      = f.select :priority, Task.priorities.keys, {selected: 'normal'}, class: 'form-control'
   
   = f.submit "登録", class: "btn btn-primary btn-block"
